@@ -34,6 +34,9 @@ temp.df <- lapply(temp, read.csv)
 ##Add LIT_ID from end of File name
 for (i in 1:length(temp.df)) temp.df[[i]]$LIT_ID<-rep(sub('.*\\.', '', names(temp.df[[i]])[7]), nrow(temp.df[[i]]))
 
+#Alternative way to add LIT_ID
+#for (i in 1:length(temp.df)) temp.df[[i]]$LIT_ID<-rep(str_extract(temp[i], "[^-]+"), nrow(temp.df[[i]]))
+
 ##Rename value column
 for (i in 1:length(temp.df)) names(temp.df[[i]])[7]<-"value"
 
